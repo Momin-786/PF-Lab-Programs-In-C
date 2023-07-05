@@ -14,8 +14,8 @@ void findOccurrences(int arr[], int size) {
     }
     
     for (int i = 0; i < size; i++) {
-        if (frequency[i] > 0) {
-            printf("%d occurs %d time(s)\n", i, frequency[i]);
+        if (frequency[arr[i]] > 0) {
+            printf("%d occurs %d time(s)\n", arr[i], frequency[arr[i]]);
         }
     }
 }
