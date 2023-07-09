@@ -1,64 +1,47 @@
-#include <stdio.h>
-
-void findAllSubstringIndexes(const char *str, const char *substr, int *indexes, int *count) {
-    int i, j, k;
-    int strLen = 0;
-    int substrLen = 0;
-
-    // Calculate the length of the input string
-    while (str[strLen] != '\0') {
-        strLen++;
-    }
-
-    // Calculate the length of the substring
-    while (substr[substrLen] != '\0') {
-        substrLen++;
-    }
-
-    *count = 0;
-
-    for (i = 0; i <= strLen - substrLen; i++) {
-        j = 0;
-        k = i;
-
-        // Check if substring is found at current index
-        while (str[k] == substr[j] && substr[j] != '\0') {
-            k++;
-            j++;
-        }
-
-        // If the entire substring is found, store the index
-        if (j == substrLen) {
-            indexes[*count] = i;
-            (*count)++;
-        }
-    }
+#include<stdio.h>
+void findindex(char str[] , char substr[]);
+int strlength	(char str[]);
+int main()
+{ char str[100],substr[100];
+  int index;
+  printf("Enter the string\n");
+  gets(str);
+  printf("Enter the substring\n");
+  gets(substr);
+  findindex(str,substr);
+  return 0;
 }
+int strlength(char str[])
+{ int i=0;
+  while(str[i]!='\0')
+  i++;
+  return i;
+}
+void findindex(char str[],char substr[])
+{ int i,j;
+int count=0;
+  int len1=strlength(str);
+  int len2=strlength(substr);
+  int index[len2];
+  for(i=0;i<len1;i++)
+    if(str[i]==substr[0])
+  { for(j=0;j<len2;j++)
 
-int main() {
-    char str[100];
-    char substr[100];
-    int indexes[100];
-    int count = 0;
-    int i;
-
-    printf("Enter a string: ");
-    gets(str);
-
-    printf("Enter a substring: ");
-    gets(substr);
-
-    findAllSubstringIndexes(str, substr, indexes, &count);
-
-    if (count > 0) {
-        printf("Substring found at indexes: ");
-        for (i = 0; i < count; i++) {
-            printf("%d ", indexes[i]);
-        }
-        printf("\n");
-    } else {
-        printf("Substring not found\n");
+	{ if(str[i+j]!=substr[j])
+	  break;
+	}
+	if(j==len2)
+	{
+    index[count]=i;
+    count++;
     }
-
-    return 0;
+  }
+    if(count==0)
+    printf("Substring not found\n");
+    else
+    {
+        printf("Substring found at index ");
+        for(i=0;i<count;i++)
+        printf("%d ",index[i]);
+    }
 }

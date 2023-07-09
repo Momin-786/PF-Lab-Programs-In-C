@@ -25,7 +25,7 @@ int findindex(char str[],char substr[])
 { int i,j;
   int len1=strlength(str);
   int len2=strlength(substr);
-  for(i=0;i<len1;i++)
+  for(i=len1;i>=0;i--)
   { for(j=0;j<len2;j++)
 	{ if(str[i+j]!=substr[j])
 	  break;
